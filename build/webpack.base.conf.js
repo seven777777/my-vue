@@ -52,7 +52,7 @@ module.exports = {
         loader: 'vue-loader',
         options: vueLoaderConfig
       },
-      {
+      {//对src和test文件夹下的.js文件使用babel-loader将es6+转成es5
         test: /\.js$/,
         loader: 'babel-loader',
         include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
