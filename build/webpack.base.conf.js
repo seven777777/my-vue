@@ -1,9 +1,16 @@
+/*
+ * @Author: seven.zhang 
+ * @Date: 2018-05-15 17:01:59 
+ * @Last Modified by: seven.zhang
+ * @Last Modified time: 2018-05-15 17:33:50
+ */
+
 'use strict'
 const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
-
+// 获取绝对路径
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
@@ -12,26 +19,35 @@ function resolve (dir) {
 
 module.exports = {
   context: path.resolve(__dirname, '../'),
+  // webpack入口文件
   entry: {
     app: './src/main.js'
   },
+  // webpack的输出路径和命名规则
   output: {
+    // webpack输出的目标文件夹路径
     path: config.build.assetsRoot,
+    // webpack输出bundle文件命名格式
     filename: '[name].js',
+    // webpack编译输出的发布路径
     publicPath: process.env.NODE_ENV === 'production'
       ? config.build.assetsPublicPath
       : config.dev.assetsPublicPath
   },
+  // 模块resolve的规则
   resolve: {
     extensions: ['.js', '.vue', '.json'],
+    // 别名，方便引用模块，例如有了别名之后，
+    // import Vue from 'vue/dist/vue.common.js'可以写成 import Vue from 'vue'
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
     }
   },
+  // 不同类型模块的处理规则
   module: {
     rules: [
-      {
+      {// 对所有.vue文件使用vue-loader进行编译
         test: /\.vue$/,
         loader: 'vue-loader',
         options: vueLoaderConfig
