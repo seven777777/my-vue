@@ -2,7 +2,7 @@
  * @Author: seven.zhang 
  * @Date: 2018-05-16 09:47:47 
  * @Last Modified by: seven.zhang
- * @Last Modified time: 2018-05-16 09:56:41
+ * @Last Modified time: 2018-05-16 10:57:28
  */
 
 /*
@@ -25,7 +25,7 @@ module.exports = {
     // 各种Dev服务器设置
     host: 'localhost', // 可以被process.env.HOST覆盖
     port: 8080, // dev-server监听的端口
-    autoOpenBrowser: false,// 是否自动打开浏览器
+    autoOpenBrowser: true,// 是否自动打开浏览器
     errorOverlay: true,
     notifyOnErrors: true,
     poll: false, 

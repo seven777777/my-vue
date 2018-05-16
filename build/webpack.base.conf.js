@@ -2,7 +2,7 @@
  * @Author: seven.zhang 
  * @Date: 2018-05-15 17:01:59 
  * @Last Modified by: seven.zhang
- * @Last Modified time: 2018-05-16 09:31:06
+ * @Last Modified time: 2018-05-16 13:55:24
  */
 
  /*
@@ -16,6 +16,7 @@ const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
+const PrerenderSpaPlugin = require('prerender-spa-plugin')
 // 获取绝对路径
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
