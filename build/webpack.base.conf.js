@@ -2,9 +2,15 @@
  * @Author: seven.zhang 
  * @Date: 2018-05-15 17:01:59 
  * @Last Modified by: seven.zhang
- * @Last Modified time: 2018-05-15 17:33:50
+ * @Last Modified time: 2018-05-16 09:31:06
  */
 
+ /*
+  * 配置webpack编译入口
+  * 配置webpack输出路径和命名规则
+  * 配置模块resolve规则
+  * 配置不同类型模块的处理规则
+  */
 'use strict'
 const path = require('path')
 const utils = require('./utils')
@@ -57,27 +63,33 @@ module.exports = {
         loader: 'babel-loader',
         include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
       },
-      {
+      {// 对图片资源文件使用url-loader
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
         options: {
+          // 小于10K的图片转成base64编码的dataURL字符串写到代码中
           limit: 10000,
+          // 其他的图片转移到静态资源文件夹
           name: utils.assetsPath('img/[name].[hash:7].[ext]')
         }
       },
-      {
+      {// 对多媒体资源文件使用url-loader
         test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
         loader: 'url-loader',
         options: {
+          // 小于10K的资源转成base64编码的dataURL字符串写到代码中
           limit: 10000,
+          // 其他的资源转移到静态资源文件夹
           name: utils.assetsPath('media/[name].[hash:7].[ext]')
         }
       },
-      {
+      {// 对字体资源文件使用url-loader
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
         loader: 'url-loader',
         options: {
+          // 小于10K的资源转成base64编码的dataURL字符串写到代码中
           limit: 10000,
+          // 其他的资源转移到静态资源文件夹
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
       }
