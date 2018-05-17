@@ -2,7 +2,7 @@
  * @Author: seven.zhang 
  * @Date: 2018-05-16 09:39:37 
  * @Last Modified by: seven.zhang
- * @Last Modified time: 2018-05-16 09:45:27
+ * @Last Modified time: 2018-05-17 15:37:58
  */
 
  /*
@@ -27,6 +27,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 // optimize-css-assets-webpack-plugin，用于优化和最小化css资源
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const SkeletonWebpackPlugin = require('vue-skeleton-webpack-plugin')
 
 const env = require('../config/prod.env')
 
@@ -137,7 +138,27 @@ const webpackConfig = merge(baseWebpackConfig, {
         to: config.build.assetsSubDirectory,
         ignore: ['.*']
       }
-    ])
+    ]),
+
+    // inject skeleton content(DOM & CSS) into HTML
+    new SkeletonWebpackPlugin({
+      webpackConfig: require('./webpack.skeleton.conf'),
+      quiet: true,
+      minimize: true,
+      router: {
+        mode: 'hash',
+        routes: [
+          {
+            path: '/seven',
+            skeletonId: 'skeleton1'
+            },
+            {
+              path: '/',
+              skeletonId: 'skeleton2'
+            },
+        ]
+      }
+    }),
   ]
 })
 

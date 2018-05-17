@@ -1,7 +1,12 @@
 <template>
   <div class="seven">
-    {{msg2}}
-    <div class="box"></div>
+    <h1>{{ msg2 }}</h1>
+    <div class="box_wrap">
+      <p class="box">1</p>
+      <p class="box">2</p>
+      <p class="box">3</p>
+      <p class="box">4</p>
+    </div>
   </div>
 </template>
 
@@ -19,14 +24,19 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
 .seven{
-  width: 1000px;
+  width: 100%;
   height: 500px;
-  background: pink;
-  .box{
-    width: 100px;
+  .box_wrap{
+    width: 100%;
     height: 100px;
-    background:#fff;
-    margin:0 auto;
+    display: flex;
+    justify-content: center;
+    .box{
+      width: 100px;
+      height: 100px;
+      margin: 10px 20px;
+      background:rgb(19, 151, 70);
+    }
   }
 }
 </style>

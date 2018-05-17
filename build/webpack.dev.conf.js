@@ -2,7 +2,7 @@
  * @Author: seven.zhang 
  * @Date: 2018-05-16 09:20:12 
  * @Last Modified by: seven.zhang
- * @Last Modified time: 2018-05-16 09:30:09
+ * @Last Modified time: 2018-05-17 15:38:04
  */
 
  /*
@@ -27,6 +27,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 // friendly-errors-webpack-plugin用于更友好地输出webpack的警告、错误等信息
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
+const SkeletonWebpackPlugin = require('vue-skeleton-webpack-plugin')
 
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
@@ -88,7 +89,26 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         to: config.dev.assetsSubDirectory,
         ignore: ['.*']
       }
-    ])
+    ]),
+    // inject skeleton content(DOM & CSS) into HTML
+    new SkeletonWebpackPlugin({
+      webpackConfig: require('./webpack.skeleton.conf'),
+      quiet: true,
+      minimize: true,
+      router: {
+        mode: 'hash',
+        routes: [
+          {
+            path: '/seven',
+            skeletonId: 'skeleton1'
+            },
+            {
+              path: '/',
+              skeletonId: 'skeleton2'
+            },
+        ]
+      }
+    }),
   ]
 })
 
