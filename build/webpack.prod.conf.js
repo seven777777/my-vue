@@ -2,7 +2,7 @@
  * @Author: seven.zhang 
  * @Date: 2018-05-16 09:39:37 
  * @Last Modified by: seven.zhang
- * @Last Modified time: 2018-05-17 15:37:58
+ * @Last Modified time: 2018-05-17 16:57:06
  */
 
  /*
@@ -149,13 +149,13 @@ const webpackConfig = merge(baseWebpackConfig, {
         mode: 'hash',
         routes: [
           {
-            path: '/seven',
+            path: '/',
             skeletonId: 'skeleton1'
-            },
-            {
-              path: '/',
-              skeletonId: 'skeleton2'
-            },
+          },
+          {
+            path: '/seven',
+            skeletonId: 'skeleton2'
+          },
         ]
       }
     }),
