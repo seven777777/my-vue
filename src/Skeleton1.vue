@@ -1,5 +1,13 @@
 <template>
-    <div class="skeleton-wrapper">Skeleton For Home</div>
+    <div class="skeleton-wrapper">
+        <header class="skeleton-header"></header>
+        <section class="skeleton-block">
+            <p class="skeleton-block-title"></p>
+            <p class="skeleton-block-con"></p>
+            <p class="skeleton-block-con"></p>
+            <p class="skeleton-block-con"></p>
+        </section>
+    </div>
 </template>
 
 <script>
@@ -20,5 +28,18 @@ export default {
     display: flex;
     flex-direction: column;
     padding-top: 8px;
+}
+.skeleton-block-title{
+    height: 38px;
+    background: #ececec;
+    margin: 0 auto;
+    width: 200px;
+}
+.skeleton-block-con{
+    height: 38px;
+    background: #ececec;
+    margin: 0 auto;
+    margin-top: 20px;
+    width: 300px;
 }
 </style>
