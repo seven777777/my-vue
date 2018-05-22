@@ -2,7 +2,7 @@
  * @Author: seven.zhang 
  * @Date: 2018-05-17 11:01:12 
  * @Last Modified by: seven.zhang
- * @Last Modified time: 2018-05-17 11:11:18
+ * @Last Modified time: 2018-05-22 16:06:33
  */
 import Vue from 'vue'
 import Router from 'vue-router'
@@ -23,5 +23,9 @@ export default new Router({
             name: 'seven',
             component: seven
         }
-    ]
+    ],
+    // scrollBehavior (to, from, savedPosition) {
+    //     // return 期望滚动到哪个的位置
+    //     return{x:0,y:0}
+    // }
 })
