@@ -1,7 +1,10 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h1>{{ msg }}</h1>
+    <p>{{msg}}</p>
+    <h1>{{ hmsg }}</h1>
+    <h1>{{ hmsg }}</h1>
+    <input type="text" value="要发送的数据" v-model="sendMsg">
+    <button @click="send">发送</button>
   </div>
 </template>
 
@@ -10,7 +13,25 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      hmsg: 'Welcome to Your Vue.js App',
+      sendMsg:'要发送的数据,啦啦啦'
+    }
+  },
+  props:{
+    msg:String,
+    eventHub: Object
+  },
+  mounted(){
+    this.init();
+  },
+  methods:{
+    init(){
+      console.log(this.msg,1);
+      this.$emit("test","first")
+    },
+    send(){
+      this.eventHub.$emit('a-msg',this.sendMsg)
+      // this.$router.push({path:'/seven'});
     }
   }
 }
